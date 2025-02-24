@@ -6,16 +6,25 @@
     <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
-<body>
+<body onload="displayPosts()">
     
-    <input type="text" id="input">
+    <!-- <input type="text" id="input">
     <button id="btn" onclick="postMessage()">Post</button>
 
     <div class="container">
     <div id="post">
 
     </div>
-</div>
+</div> -->
+
+<!-- <body onload="displayPosts()"> -->
+
+    <h2>Write a Post</h2>
+    <textarea id="postInput" placeholder="Write your post here..." rows="3" cols="30"></textarea><br>
+    <button onclick="savePost()">Post</button>
+
+    <h2>Post Wall</h2>
+    <div id="postWall"></div>
     <script src="app.js"></script>
 </body>
 </html>

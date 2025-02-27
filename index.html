@@ -3,28 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="style.css">
     <title>Document</title>
-</head>
-<body>
+    <body>
+
+        <header>
+            <div class="logo">MySocial</div>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Profile</a></li>
+                    <li><a href="#">Settings</a></li>
+                </ul>
+            </nav>
+        </header>
+
+
+
+        <main>
+            <div class="container">
+                <h2>Write a Post</h2>
+                <input type="text" id="input" placeholder="What's on your mind?">
+                <div class="backgrounds">
+                    <div class="bg-option" style="background: linear-gradient(74deg, rgba(191,243,220,1) 35%, rgba(207,165,248,1) 100%);" onclick="selectBg('linear-gradient(74deg, rgba(191,243,220,1) 35%, rgba(207,165,248,1) 100%)')"></div>
+                    <div class="bg-option" style="background: linear-gradient(315deg, #7ed6df 0%, #000000 74%);" onclick="selectBg('linear-gradient(315deg, #7ed6df 0%, #000000 74%)')"></div>
+                    <div class="bg-option" style="background: linear-gradient(to right, #f1f2b5, #135058);" onclick="selectBg('linear-gradient(to right, #f1f2b5, #135058)')"></div>
+                    <div class="bg-option" style="background: linear-gradient(159deg, rgba(1,50,32,1) 0%, rgba(57,255,20,1) 100%);" onclick="selectBg('linear-gradient(159deg, rgba(1,50,32,1) 0%, rgba(57,255,20,1) 100%)')"></div>
+                    <div class="bg-option" style="background: linear-gradient(135deg, #ff9a9e, #fad0c4);" onclick="selectBg('linear-gradient(135deg, #ff9a9e, #fad0c4)')"></div>
+                    <div class="bg-option" style="background: linear-gradient(to right, #ff9966, #ff5e62);" onclick="selectBg('linear-gradient(to right, #ff9966, #ff5e62)')"></div>
+                    <div class="bg-option" style="background: linear-gradient(225deg, #3a1c71, #d76d77, #ffaf7b);" onclick="selectBg('linear-gradient(225deg, #3a1c71, #d76d77, #ffaf7b)')"></div>
+                    <div class="bg-option" style="background: linear-gradient(to bottom, #4facfe, #00f2fe);" onclick="selectBg('linear-gradient(to bottom, #4facfe, #00f2fe)')"></div>
+                </div>
+                <button onclick="savePost()" id="btn">Post</button>
+            </div>
+            
+            <h2 class="wall-title">Post Wall</h2>
+            <div id="postWall" class="post-container"></div>
+        </main>
     
-    <!-- <input type="text" id="input">
-    <button id="btn" onclick="postMessage()">Post</button>
-
-    <div class="container">
-    <div id="post">
-
-    </div>
-</div> -->
-
-<!-- <body onload="displayPosts()"> -->
-
-    <h2>Write a Post</h2>
-    <textarea id="postInput" placeholder="Write your post here..." rows="3" cols="30"></textarea><br>
-    <button onclick="savePost()">Post</button>
-
-    <h2>Post Wall</h2>
-    <div id="postWall"></div>
-    <script src="app.js"></script>
-</body>
-</html>
+    
+        <script src="app.js"></script>
+    </body>
+</head>

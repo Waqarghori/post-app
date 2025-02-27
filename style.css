@@ -1,8 +1,105 @@
-.container{
-    height: 300px;
-    padding: 0px;
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f2f5;
+    margin: 0;
+    padding: 0;
+}
+header {
+    background-color: #1877f2;
+    color: white;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+nav ul li {
+    display: inline;
+}
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+}
+.container {
+    background: white;
+    padding: 20px;
+    margin: 20px auto;
+    width: 50%;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+button {
+    background-color: #1877f2;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.wall-title {
+    text-align: center;
+    margin-top: 20px;
+}
+.post-container {
+    width: 50%;
+    margin: auto;
+}
+.post {
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    background: white;
+}
+.post-content {
+    height: 100px;
+    padding: 15px;
+    border-radius: 5px;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: aqua;
+}
+.post-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    font-size: 14px;
+    color: gray;
+}
+.backgrounds {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+p{
+    color: white;
+    font-size: 30px;
+    font-weight: bolder;
+}
+.bg-option {
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: 2px solid transparent;
+}
+.bg-option.selected {
+    border-color: black;
 }

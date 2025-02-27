@@ -1,61 +1,90 @@
+let selectedBg = "white"; 
+
+function selectBg(color) {
+    selectedBg = color;
+    let bgOptions = document.querySelectorAll(".bg-option");
+
+    for (let i = 0; i < bgOptions.length; i++) {
+        bgOptions[i].classList.remove("selected");
+    }
+
+    event.target.classList.add("selected");
+}
+
 function savePost() {
-    let postText = document.getElementById("postInput").value;
-    
-    if (postText === "") {
-        alert("Post likho pehle! 🚀");
+    let input = document.getElementById("input");
+
+    if (input.value === "") { 
+        alert("Please write a post");
         return;
     }
 
-    let posts = localStorage.getItem("posts");
-    
-    if (posts === null) {
-        posts = []; // Agar koi post nahi to khali array bana lo
+    let post = localStorage.getItem("posto"); 
+    if (post) {
+        post = JSON.parse(post);
     } else {
-        posts = JSON.parse(posts); // Pehle se saved posts ko JS object me convert karo
+        post = [];
     }
 
-    let postObject = { text: postText, time: new Date().toLocaleString() };
-    posts.push(postObject); // Naya post array me add karo
+    let postObject = {
+        text: input.value,
+        time: new Date().toLocaleString(),
+        bg: selectedBg
+    };
 
-    localStorage.setItem("posts", JSON.stringify(posts)); // Wapas local storage me save karo
-    
-    document.getElementById("postInput").value = ""; // Input field ko empty karo
-    showPosts(); // Taake nayi post foran show ho
+    post.unshift(postObject);
+    localStorage.setItem("posto", JSON.stringify(post));
+    input.value = "";
+    showPost();
 }
+window.addEventListener("load", showPost())
+function showPost() {
+    let post = localStorage.getItem("posto");
 
-function showPosts() {
-    let posts = localStorage.getItem("posts");
-    
-    if (posts === null) {
-        posts = [];
+    if (post) {
+        post = JSON.parse(post);
     } else {
-        posts = JSON.parse(posts);
+        post = [];
     }
 
     let postWall = document.getElementById("postWall");
-    postWall.innerHTML = ""; // Purani posts hatao
+    postWall.innerHTML = "";
+    for (let i = 0; i < post.length; i++) {
+        let p = post[i];
 
-    for (let i = 0; i < posts.length; i++) {
         let postDiv = document.createElement("div");
-        postDiv.innerHTML = `
-            <p>${posts[i].text}</p>
-            <small>${posts[i].time}</small>
-            <button onclick="deletePost(${i})">🗑 Delete</button>
+        postDiv.classList.add("post");
+
+        let postContent = document.createElement("div");
+        postContent.classList.add("post-content");
+        postContent.style.background = p.bg;
+        postContent.innerHTML = `<p>${p.text}</p>`;
+
+        let postFooter = document.createElement("div");
+        postFooter.classList.add("post-footer");
+
+        postFooter.innerHTML = `
+            <small>${p.time}</small>
+            <button onclick="deletePost(${i})"><i class="fa-solid fa-trash-can"></i></button>
         `;
+
+        postDiv.appendChild(postContent);
+        postDiv.appendChild(postFooter);
         postWall.appendChild(postDiv);
     }
 }
 
 function deletePost(index) {
-    let posts = localStorage.getItem("posts");
+    let posts = localStorage.getItem("posto");
 
-    if (posts === null) {
-        return;
+    if (posts) {
+        posts = JSON.parse(posts);
+    } else {
+        posts = [];
     }
 
-    posts = JSON.parse(posts);
-    posts.splice(index, 1); // List me se ek post hatao
-    localStorage.setItem("posts", JSON.stringify(posts)); // Wapas save karo
-    
-    showPosts(); // Update wall
+    posts.splice(index, 1);
+    localStorage.setItem("posto", JSON.stringify(posts));
+    showPost();
 }
+
